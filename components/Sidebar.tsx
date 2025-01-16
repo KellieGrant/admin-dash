@@ -37,7 +37,7 @@ const Sidebar = () => {
           </CommandItem>
           <CommandItem>
             <Folders className='mr-2 h-4 w-4' />
-            <Link href='#'>Catagories</Link>
+            <Link href='#'>Categories</Link>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
