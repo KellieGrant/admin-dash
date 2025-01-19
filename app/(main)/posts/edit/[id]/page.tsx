@@ -17,6 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import posts from "@/data/posts";
 import { use, useState, useEffect } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   title: z.string().min(1, {
@@ -38,6 +39,8 @@ interface PostEditPageProps {
 }
 
 const PostEditPage = ({ params }: PostEditPageProps) => {
+  const { toast } = useToast();
+
   const [post, setPost] = useState<any | null>(null);
   const { id } = use(params);
 
@@ -59,7 +62,10 @@ const PostEditPage = ({ params }: PostEditPageProps) => {
   });
 
   const handleSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
+    toast({
+      title: "Post Has Been Updated Successfully",
+      description: `Updated by ${data.Author} on ${data.Date}`,
+    });
   };
 
   return (
